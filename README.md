@@ -13,3 +13,9 @@ Learning from [this Udemy course](https://www.udemy.com/course/java-multithreadi
 
   - ![Single Threaded Process](assets/process-single-threaded.png)
   - ![Multi-threaded Process](assets/process-multi-threaded.png)
+
+
+- Performance in Multithreading
+
+  - Latency: the time to completion of a task. Measured in time units.
+  - Throughput: the amount of tasks completed in a given period. Measured in tasks/time unit.
