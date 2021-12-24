@@ -56,11 +56,40 @@ public class Main {
 
         private int items = 0;
 
-        public void increment() {
+        /*
+            public synchronized void method() {
+                ...
+            }
+
+            is equivalent to:
+
+            public void method() {
+                synchronized(this) {
+                    ...
+                }
+            }
+
+            If a class has multiple synchronized blocks, only one of those
+            methods can be accessed at a time by the same object.
+
+            Another syntax for creating synchronized blocs:
+
+            Object LOCK_OBJECT = new Object();
+
+            public void method() {
+                ...
+                synchronized(LOCK_OBJECT) {
+                    ...
+                }
+                ...
+            }
+        */
+
+        public synchronized void increment() {
             this.items++;
         }
 
-        public void decremen() {
+        public synchronized void decremen() {
             this.items--;
         }
 
