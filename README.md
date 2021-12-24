@@ -10,12 +10,36 @@ Learning from [this Udemy course](https://www.udemy.com/course/java-multithreadi
 
 
 - Single threaded Process vs Multi-threaded Process
-
   - ![Single Threaded Process](assets/process-single-threaded.png)
   - ![Multi-threaded Process](assets/process-multi-threaded.png)
 
 
 - Performance in Multithreading
-
   - Latency: the time to completion of a task. Measured in time units.
   - Throughput: the amount of tasks completed in a given period. Measured in tasks/time unit.
+
+- Atomic Operations
+  - Assignments to primitive types excluding double and long
+  - Assignments to references
+  - Assignments to double and long using the volatile keyword
+
+- Race Condition
+  - Multiple threads are accessing a shared resource
+  - At least one thread is modifying the resource
+  - The timing of the threads' scheduling may cause incorrect result
+  - The core of the problem is non atomic operations performed on the shared resource.
+  - Solution: identify the critical section where race condition is happening and protect it using a synchronized block
+
+- Data Race
+  - Compiler and CPU may execute the instructions out of order to optimize performance and utilization (while maintaining logical correctness of code).
+  - This is an important compiler and CPU features to speed up the code.
+  - This may lead to unexpected and incorrect results in a multi-threaded environment.
+  - Solution: establish a happens-before semantic either via synchronized blocks or volatile keywords (as only 1 thread will be able to access that code)
+  ```java
+  volatile int sharedVar;
+  public void method() {
+    ... // all instructions will be executed before
+    read/write(sharedVar);
+    ... // all instructions will be executed after
+  }
+  ```
