@@ -1,4 +1,4 @@
-package thread.race;
+package thread.race.nonatomic;
 
 public class Main {
 
