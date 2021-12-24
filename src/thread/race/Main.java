@@ -10,11 +10,11 @@ public class Main {
         Thread decrementingThread = new DecrementingThread(inventoryCounter);
 
         
-        // Sequential exection
+        // Parallel exection
         incrementingThread.start();
-        incrementingThread.join();
-
         decrementingThread.start();
+
+        incrementingThread.join();
         decrementingThread.join();
 
         System.out.println("The count of items is: " + inventoryCounter.getItems());
