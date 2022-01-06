@@ -43,3 +43,12 @@ Learning from [this Udemy course](https://www.udemy.com/course/java-multithreadi
     ... // all instructions will be executed after
   }
   ```
+
+  - Conditions for Deadlock
+    - Mutual exclusion: only one thread can have exclusive access to a resource
+    - Hold and wait: at least one thread is holding a resource and is waiting for another resource
+    - Non-preemptive allocation: a resource is released only after the thread is done using it
+    - Circular wait: a chain of at least two threads each one is holding one resource and waiting for another resource
+
+  - Solution for Deadlock
+    - Enforce a strict order on lock aquision
