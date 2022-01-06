@@ -43,3 +43,44 @@ Learning from [this Udemy course](https://www.udemy.com/course/java-multithreadi
     ... // all instructions will be executed after
   }
   ```
+
+  - Conditions for Deadlock
+    - Mutual exclusion: only one thread can have exclusive access to a resource
+    - Hold and wait: at least one thread is holding a resource and is waiting for another resource
+    - Non-preemptive allocation: a resource is released only after the thread is done using it
+    - Circular wait: a chain of at least two threads each one is holding one resource and waiting for another resource
+
+  - Solution for Deadlock
+    - Enforce a strict order on lock aquision
+
+  - Reentrant Lock
+
+  ```java
+  Lock lockObject = new ReentrantLock();
+  
+  public void method() {
+    lockObject.lock();
+    ...
+    ...
+    lockObject.unlock();
+  }
+  ```
+
+  - Challenges with reentrant locking:
+    - We may forget to unlock the lockObject
+    - Our code may return or throw an exception in the critical section due to which unlock is never reached
+    - Solution is to use try-finally block where critical section is within the ```try``` block and unlock is within the ```finally``` block.
+
+```java
+Lock lockObject = new ReentrantLock();
+  
+  public void method() {
+    lockObject.lock();
+    try {
+      ...
+      ...
+    } finally {
+      lockObject.unlock();
+    }
+  }
+```
