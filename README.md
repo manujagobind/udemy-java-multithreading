@@ -52,3 +52,35 @@ Learning from [this Udemy course](https://www.udemy.com/course/java-multithreadi
 
   - Solution for Deadlock
     - Enforce a strict order on lock aquision
+
+  - Reentrant Lock
+
+  ```java
+  Lock lockObject = new ReentrantLock();
+  
+  public void method() {
+    lockObject.lock();
+    ...
+    ...
+    lockObject.unlock();
+  }
+  ```
+
+  - Challenges with reentrant locking:
+    - We may forget to unlock the lockObject
+    - Our code may return or throw an exception in the critical section due to which unlock is never reached
+    - Solution is to use try-finally block where critical section is within the ```try``` block and unlock is within the ```finally``` block.
+
+```java
+Lock lockObject = new ReentrantLock();
+  
+  public void method() {
+    lockObject.lock();
+    try {
+      ...
+      ...
+    } finally {
+      lockObject.unlock();
+    }
+  }
+```
